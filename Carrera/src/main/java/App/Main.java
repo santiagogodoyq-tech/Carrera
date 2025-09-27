@@ -1,17 +1,26 @@
 package App;
+import Model.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Optional;
+
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        String materiaBuscada = JOptionPane.showInputDialog(null, "ingrese la materia que desea buscar");
+
+
+     Carrera carrera = new Carrera( "ingenieria ");
+Profesor profesor3 = new ProfesorPlanta("1093", "sofia arbelaez", "otro titulo", 130, "ninguna", false);
+     Profesor profesor2 = new ProfesorPlanta("1424", "antonio nariño", "algun titulo", 19, "profesor", false);
+        Profesor profesor = new ProfesorPlanta("1342","Juan Albert","Ingeniero de Software",10,"ciberseguridad",false);
+        Materia materia = new MateriaPractica("1341","programacion",10,11,"2",profesor,4,7);
+        carrera.registrarMaterias(materia);
+        carrera.profesorProgramacion(materia);
+
+
     }
+
 }

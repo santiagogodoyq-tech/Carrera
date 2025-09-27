@@ -6,4 +6,16 @@ public class MateriaTeorica extends Materia{
         super (codigo, nombre, horaSemana, cantidadCreditos, semestreEsperado, profesor);
     }
 
+    @Override
+    public String toString() {
+        return "MateriaTeorica{" +
+                "listaEstudiantes=" + listaEstudiantes +
+                ", profesor=" + profesor +
+                ", semestreEsperado='" + semestreEsperado + '\'' +
+                ", cantidadCreditos=" + cantidadCreditos +
+                ", horaSemana=" + horaSemana +
+                ", nombre='" + nombre + '\'' +
+                ", codigo='" + codigo + '\'' +
+                '}';
+    }
 }

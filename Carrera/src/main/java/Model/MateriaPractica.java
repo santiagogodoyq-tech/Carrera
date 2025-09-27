@@ -21,4 +21,18 @@ public  class MateriaPractica extends Materia {
             this.numeroLaboratorios = numeroLaboratorios;
  }
 
+    @Override
+    public String toString() {
+        return "MateriaPractica{" +
+                "listaEstudiantes=" + listaEstudiantes +
+                ", profesor=" + profesor +
+                ", semestreEsperado='" + semestreEsperado + '\'' +
+                ", cantidadCreditos=" + cantidadCreditos +
+                ", horaSemana=" + horaSemana +
+                ", nombre='" + nombre + '\'' +
+                ", codigo='" + codigo + '\'' +
+                ", numeroLaboratorios=" + numeroLaboratorios +
+                ", numeroHorasPractica=" + numeroHorasPractica +
+                '}';
     }
+}

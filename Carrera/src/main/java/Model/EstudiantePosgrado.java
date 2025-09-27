@@ -4,7 +4,7 @@ public class EstudiantePosgrado extends Estudiante{
     private Educacion educacion;
     private String temaInvestigacion;
     public EstudiantePosgrado(String identificacion, String nombre, String id, String programaAcademico, String semestre, Educacion educacion, String temaInvestigacion, Profesor profesor) {
-        super(identificacion, nombre, id, programaAcademico, semestre);
+        super(nombre, id, programaAcademico, semestre);
         this.educacion = educacion;
         this.temaInvestigacion = temaInvestigacion;
     }
@@ -23,5 +23,14 @@ public class EstudiantePosgrado extends Estudiante{
 
     public void setTemaInvestigacion(String temaInvestigacion) {
         this.temaInvestigacion = temaInvestigacion;
+    }
+
+    @Override
+    public String toString() {
+        return "EstudiantePosgrado{" +
+                "educacion=" + educacion +
+                ", temaInvestigacion='" + temaInvestigacion + '\'' +
+                ", listaMaterias=" + listaMaterias +
+                '}';
     }
 }

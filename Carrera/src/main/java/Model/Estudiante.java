@@ -7,7 +7,7 @@ public class Estudiante {
     private String id;
     private String programaAcademico;
     private String semestre;
-    private ArrayList<Materia> listaMaterias;
+    protected ArrayList<Materia> listaMaterias;
     public Estudiante(String nombre, String id, String programaAcademico, String semestre) {
     this.nombre = nombre;
     this.id = id;
@@ -54,5 +54,4 @@ public class Estudiante {
     public void setListaMaterias(ArrayList<Materia> listaMaterias) {
         this.listaMaterias = listaMaterias;
     }
-    
 }

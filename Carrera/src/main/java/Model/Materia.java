@@ -8,7 +8,6 @@ public abstract class Materia {
     public String semestreEsperado;
     public Profesor profesor;
     public ArrayList<Estudiante>listaEstudiantes;
-    public ArrayList<Profesor> listaProfesores;
     public Materia(String codigo, String nombre, int horaSemana, int cantidadCreditos, String semestreEsperado, Profesor profesor) {
         this.codigo = codigo;
         this.nombre = nombre;
