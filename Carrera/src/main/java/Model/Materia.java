@@ -5,16 +5,18 @@ public abstract class Materia {
     public String nombre;
     public int horaSemana;
     public int cantidadCreditos;
-    public String semestreEsperado;
+    public int semestreEsperado;
     public Profesor profesor;
-    public ArrayList<Estudiante>listaEstudiantes;
-    public Materia(String codigo, String nombre, int horaSemana, int cantidadCreditos, String semestreEsperado, Profesor profesor) {
+
+    protected ArrayList<Estudiante>listaEstudiantes;
+    public Materia(String codigo, String nombre, int horaSemana, int cantidadCreditos, int semestreEsperado, Profesor profesor) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.horaSemana = horaSemana;
         this.cantidadCreditos = cantidadCreditos;
         this.semestreEsperado = semestreEsperado;
         this.profesor = profesor;
+        this.listaEstudiantes = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -53,7 +55,7 @@ public abstract class Materia {
         return semestreEsperado;
     }
 
-    public void setSemestreEsperado(String semestreEsperado) {
+    public void setSemestreEsperado(int semestreEsperado) {
         this.semestreEsperado = semestreEsperado;
     }
 
@@ -63,5 +65,13 @@ public abstract class Materia {
 
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
+    }
+
+    public ArrayList<Estudiante> getListaEstudiantes() {
+        return listaEstudiantes;
+    }
+
+    public void setListaEstudiantes(ArrayList<Estudiante> listaEstudiantes) {
+        this.listaEstudiantes = listaEstudiantes;
     }
 }

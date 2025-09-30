@@ -1,7 +1,7 @@
 package Model;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Optional;
 
 public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<Profesor> listaProfesores, ArrayList<Estudiante> listaEstudiantes) {
@@ -12,7 +12,7 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
         new ArrayList<>(),
         new ArrayList<>());
     }
-    /// ///////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
 
 
     public void agregarEstudiante(Estudiante estudiante) {
@@ -63,7 +63,7 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
             System.out.println("Se ha removido al profesor "
                     + profesorBuscado + " de la universidad.");
         } else {
-            System.out.println("El estudiante con código " + estudiante.getId() + " no está registrado.");
+            System.out.println("El estudiante con código " + profesor.getId() + " no está registrado.");
         }
     }
 
@@ -109,18 +109,60 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
     }
     // una funcion que consulte todas las materias de un semestre en especifico
 
-    public int semestreBuscado (int semestreEsperado){
-        
+    /**
+     * coso pa buscar materias de un semestre en especifico
+      * @param semestre
+     * @return
+     */
+    public ArrayList<Materia> SemestreBuscado(int semestre) {
+        return new ArrayList<>(
+                listaMaterias.stream().filter(materia -> materia.getSemestreEsperado() == semestre).toList());
+    }
+
+
+            //saca el nombre de todos los estudiantes de la materia
+    public String estudiantesMateria(Materia materia){
+        return listaMaterias.stream().filter(x -> x.getListaEstudiantes() != null).flatMap(x -> x.getListaEstudiantes().stream()).findFirst().get().getNombre();
+    }
+
+    // calcular el total de olas semanales de una playa del caribe.
+
+    public int horasMateria(Materia materia){
+        return listaMaterias.stream().filter(m -> m.getCodigo().equals(materia.getCodigo())).mapToInt(Materia :: getHoraSemana).sum();
+    }
+   // cuantas catedras existen en un profesor
+    public int profesoresCatedra(){
+        return (int) listaProfesores.stream().filter(profesor -> profesor instanceof ProfesorCatedra).count();
+    }
+    public int horasSemanalesTotales (ArrayList<Materia>materiasALasQueQuiereSaberleLasHorasSemanales){
+       return listaMaterias.stream().mapToInt( materia -> materia.getHoraSemana()).sum();
+    }
+
+
+    public int calcularCreditosSemestre  (Estudiante estudiante){
+
+        return listaMaterias.stream().filter(materia -> materia.getListaEstudiantes().contains(estudiante)).mapToInt(materia :: getCantidadCreditos).sum();
+        //
+        public int calcularCreditosEstudianteSemestre(Estudiante estudiante, int semestre) {
+            return listaEstudiantes.stream()
+                    .filter(c -> c.getId().equals(estudiante.getId()))
+                    .flatMap(c -> c.getListaMaterias().stream())   // 📌 expandimos las materias del estudiante
+                    .filter(m -> m.getSemestre() == semestre)
+                    .mapToInt(Materia::getCreditos)
+                    .sum();
+        }
 
     }
+
+
 
     @Override
     public String toString() {
         return "Carrera{" +
                 "nombre='" + nombre + '\'' +
-                ", listaMaterias=" + listaMaterias +
-                ", listaProfesores=" + listaProfesores +
-                ", listaEstudiantes=" + listaEstudiantes +
+                ",\n listaMaterias=" + listaMaterias +
+                ",\n listaProfesores=" + listaProfesores +
+                ",\n listaEstudiantes=" + listaEstudiantes +
                 '}';
     }
 }
