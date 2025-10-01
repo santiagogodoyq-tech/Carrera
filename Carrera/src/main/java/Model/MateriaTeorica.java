@@ -9,13 +9,15 @@ public class MateriaTeorica extends Materia{
     @Override
     public String toString() {
         return "MateriaTeorica{" +
-                "listaEstudiantes=" + listaEstudiantes +
+                "listaEstudiantes=" + listaEstudiantes.stream()
+                .map(Estudiante::getNombre)
+                .toList() +
                 ", profesor=" + profesor +
                 ", semestreEsperado='" + semestreEsperado + '\'' +
                 ", cantidadCreditos=" + cantidadCreditos +
                 ", horaSemana=" + horaSemana +
                 ", nombre='" + nombre + '\'' +
                 ", codigo='" + codigo + '\'' +
-                '}';
+                '}'+"\n";
     }
 }

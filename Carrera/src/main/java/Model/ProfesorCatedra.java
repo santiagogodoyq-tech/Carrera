@@ -34,7 +34,9 @@ public ProfesorCatedra(String id, String nombre, String titulo, int añosDeExper
                 ", nombre='" + nombre + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", añosDeExperiencia=" + añosDeExperiencia +
-                ", listaMaterias=" + listaMaterias +
-                '}';
+                ", listaMaterias=" + listaMaterias.stream()
+                .map(Materia::getNombre)
+                .toList() +
+                '}'+"\n";
     }
 }

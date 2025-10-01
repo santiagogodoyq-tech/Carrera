@@ -30,7 +30,9 @@ public class EstudiantePregrado extends Estudiante{
         return "EstudiantePregrado{" +
                 "beca=" + beca +
                 ", promedioAcumulado=" + promedioAcumulado +
-                ", listaMaterias=" + listaMaterias +
-                '}';
+                ", listaMaterias=" + listaMaterias.stream()
+                .map(Materia::getNombre)
+                .toList() +
+                '}'+"\n";
     }
 }

@@ -30,7 +30,9 @@ public class EstudiantePosgrado extends Estudiante{
         return "EstudiantePosgrado{" +
                 "educacion=" + educacion +
                 ", temaInvestigacion='" + temaInvestigacion + '\'' +
-                ", listaMaterias=" + listaMaterias +
-                '}';
+                ", listaMaterias=" + listaMaterias.stream()
+                .map(Materia::getNombre)
+                .toList() +
+                '}'+"\n";
     }
 }

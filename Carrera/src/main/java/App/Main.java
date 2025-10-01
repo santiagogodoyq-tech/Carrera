@@ -52,9 +52,11 @@ Profesor profesor3 = new ProfesorPlanta("1093", "sofia arbelaez", "ingeniero Ele
         carrera.asignarMateriaPro(materia, profesor);
         carrera.asignarMateriaPro(materia1, profesor2);
         carrera.asignarMateriaPro(materia2, profesor3);
-        carrera.jOption(""+carrera.profesoresCatedra());
-        carrera.jOption(""+carrera.calcularCreditosEstudianteSemestre(estudiante, 2));
-        carrera.jOption(""+carrera.horasMateria(materia));
-    }
+        carrera.jOption("cantidad de profesores de catedra"+carrera.profesoresCatedra());
+        carrera.jOption("creditos Sara Benjumea "+carrera.calcularCreditosEstudianteSemestre(estudiante, 2));
+        carrera.jOption("horas semanales totales programacion "+carrera.horasSemanalesTotales(materia));
+        carrera.jOption("materias semestre 2 "+carrera.semestreBuscado(2));
+        carrera.jOption("los estudiantes de la carrera programacion son "+carrera.estudiantesMateria(materia));
 
+    }
 }

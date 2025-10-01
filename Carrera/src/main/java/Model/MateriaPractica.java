@@ -24,8 +24,10 @@ public  class MateriaPractica extends Materia {
     @Override
     public String toString() {
         return "MateriaPractica{" +
-                "listaEstudiantes=" + listaEstudiantes +
-                ", profesor=" + profesor +
+                "listaEstudiantes=" + listaEstudiantes.stream()
+                .map(Estudiante::getNombre)
+                .toList() +
+                ", profesor=" + profesor.getNombre() +
                 ", semestreEsperado='" + semestreEsperado + '\'' +
                 ", cantidadCreditos=" + cantidadCreditos +
                 ", horaSemana=" + horaSemana +
@@ -33,6 +35,6 @@ public  class MateriaPractica extends Materia {
                 ", codigo='" + codigo + '\'' +
                 ", numeroLaboratorios=" + numeroLaboratorios +
                 ", numeroHorasPractica=" + numeroHorasPractica +
-                '}';
+                "}"+"\n";
     }
 }

@@ -36,7 +36,9 @@ public class ProfesorPlanta extends Profesor {
                 ", nombre='" + nombre + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", añosDeExperiencia=" + añosDeExperiencia +
-                ", listaMaterias=" + listaMaterias +
-                '}';
+                ", listaMaterias=" + listaMaterias.stream()
+                .map(Materia::getNombre)
+                .toList() +
+                '}'+"\n";
     }
 }

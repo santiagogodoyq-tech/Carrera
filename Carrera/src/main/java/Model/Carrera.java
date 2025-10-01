@@ -3,6 +3,7 @@ package Model;
 import javax.swing.*;
 import java.util.*;
 import java.util.Optional;
+import java.util.stream.Collector;
 
 public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<Profesor> listaProfesores, ArrayList<Estudiante> listaEstudiantes) {
 
@@ -119,34 +120,27 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
         materia.listaEstudiantes.add(estudiante);
     }
     // una funcion que consulte todas las materias de un semestre en especifico
-
-    /**
-     * coso pa buscar materias de un semestre en especifico
-      * @param semestre
-     * @return
-     */
-    public ArrayList<Materia> SemestreBuscado(int semestre) {
-        return new ArrayList<>(
-                listaMaterias.stream().filter(materia -> materia.getSemestreEsperado() == semestre).toList());
+    public String semestreBuscado(int semestre) {
+        return String.valueOf(listaMaterias.stream().filter(materia -> materia.getSemestreEsperado() == semestre) .map(Materia::toString).toList());
     }
-
 
             //saca el nombre de todos los estudiantes de la materia
     public String estudiantesMateria(Materia materia){
-        return listaMaterias.stream().filter(x -> x.getListaEstudiantes() != null).flatMap(x -> x.getListaEstudiantes().stream()).findFirst().get().getNombre();
-    }
-
-    // calcular el total de olas semanales de una playa del caribe.
-
-    public int horasMateria(Materia materia){ //tenemos dos funciones que hacen lo mismo, use esta mejor
-        return listaMaterias.stream().filter(m -> m.getCodigo().equals(materia.getCodigo())).mapToInt(Materia :: getHoraSemana).sum();
+        return String.valueOf(listaMaterias.stream().filter(x -> x.getCodigo().equals(materia.getCodigo()) && x.getListaEstudiantes() != null).flatMap(x -> x.getListaEstudiantes().stream()).map(Estudiante::getNombre).toList());
     }
    // cuantas catedras existen en un profesor
     public int profesoresCatedra(){
         return (int) listaProfesores.stream().filter(profesor -> profesor instanceof ProfesorCatedra).count();
     }
-    public int horasSemanalesTotales (ArrayList<Materia>materiasALasQueQuiereSaberleLasHorasSemanales){ //campos acuerdese de cambiar esta funcion pls, y cambie el arraylist por un solo objeto
-       return listaMaterias.stream().mapToInt( materia -> materia.getHoraSemana()).sum();
+    // calcular el total de olas semanales de una playa del caribe.
+    public int horasSemanalesTotales (Materia materia){
+       int horas = 0;
+       if(materia instanceof MateriaPractica){
+           horas = materia.getHoraSemana()+materia.getHoraSemana();
+       }else{
+           horas = materia.getHoraSemana();
+       }
+       return horas;
     }
 
         public int calcularCreditosEstudianteSemestre(Estudiante estudiante, int semestre) {
@@ -167,7 +161,7 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
                 ",\n listaMaterias=" + listaMaterias +
                 ",\n listaProfesores=" + listaProfesores +
                 ",\n listaEstudiantes=" + listaEstudiantes +
-                '}';
+                '}'+"\n";
     }
     public void jOption(String mensaje){
         JOptionPane.showMessageDialog(null, mensaje);
