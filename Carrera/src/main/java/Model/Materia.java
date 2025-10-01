@@ -51,7 +51,7 @@ public abstract class Materia {
         this.cantidadCreditos = cantidadCreditos;
     }
 
-    public String getSemestreEsperado() {
+    public int getSemestreEsperado()  {
         return semestreEsperado;
     }
 

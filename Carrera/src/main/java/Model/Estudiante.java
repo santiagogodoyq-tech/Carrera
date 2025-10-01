@@ -6,9 +6,9 @@ public class Estudiante {
     private String nombre;
     private String id;
     private String programaAcademico;
-    private String semestre;
+    private int semestre;
     protected ArrayList<Materia> listaMaterias;
-    public Estudiante(String nombre, String id, String programaAcademico, String semestre) {
+    public Estudiante(String nombre, String id, String programaAcademico, int semestre) {
     this.nombre = nombre;
     this.id = id;
     this.programaAcademico = programaAcademico;
@@ -39,11 +39,11 @@ public class Estudiante {
         this.programaAcademico = programaAcademico;
     }
 
-    public String getSemestre() {
+    public int getSemestre() {
         return semestre;
     }
 
-    public void setSemestre(String semestre) {
+    public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 

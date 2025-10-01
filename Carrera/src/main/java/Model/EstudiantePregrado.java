@@ -3,7 +3,7 @@ package Model;
 public class EstudiantePregrado extends Estudiante{
     private boolean beca;
     private float promedioAcumulado;
-    public EstudiantePregrado(String identificacion, String nombre, String id, String programaAcademico, String semestre, boolean beca, float promedioAcumulado) {
+    public EstudiantePregrado(String identificacion, String nombre, String id, String programaAcademico, int semestre, boolean beca, float promedioAcumulado) {
         super(nombre, id, programaAcademico, semestre);
         this.beca = beca;
         this.promedioAcumulado = promedioAcumulado;

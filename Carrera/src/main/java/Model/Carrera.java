@@ -25,7 +25,7 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
         } else {
             respuesta = "El estudiante " + estudiante.getNombre() + " ya esta registrado";
         }
-        System.out.println(respuesta);
+        jOption(respuesta);
     }
 
     public Optional<Estudiante> buscarEstudiante(String codigo) {
@@ -36,10 +36,10 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
         Optional<Estudiante> estudianteBuscado = buscarEstudiante(estudiante.getId());
         if (estudianteBuscado.isPresent()) {
             listaEstudiantes.remove(estudiante);
-            System.out.println("Se ha removido al estudiante "
+            jOption("Se ha removido al estudiante "
                     + estudianteBuscado + " de la universidad.");
         } else {
-            System.out.println("El estudiante con código " + estudiante.getId() + " no está registrado.");
+            jOption("El estudiante con código " + estudiante.getId() + " no está registrado.");
         }
     }
     public void agregarProfesor(Profesor profesor) {
@@ -52,18 +52,18 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
         } else {
             respuesta = "El profesor " + profesor.getNombre() + " ya esta registrado";
         }
-        System.out.println(respuesta);
+        jOption(respuesta);
     }
 
     public void eliminarProfesor(Profesor profesor) {
         Optional<Profesor> profesorBuscado = buscarProfesor(
                 profesor.getId());
         if (profesorBuscado.isPresent()) {
-            listaEstudiantes.remove(profesor);
-            System.out.println("Se ha removido al profesor "
+            listaProfesores.remove(profesor);
+            jOption("Se ha removido al profesor "
                     + profesorBuscado + " de la universidad.");
         } else {
-            System.out.println("El estudiante con código " + profesor.getId() + " no está registrado.");
+            jOption("El eprofesor con código " + profesor.getId() + " no está registrado.");
         }
     }
 
@@ -95,9 +95,20 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
             listaMaterias.add(materia);
             respuesta = "Se ha registrado la materia " + materia.getNombre() + " al programa";
         } else {
-            respuesta = "El materia " + materia.getNombre() + " ya esta registrado";
+            respuesta = "La materia " + materia.getNombre() + " ya esta registrado";
         }
-        System.out.println(respuesta);
+        jOption(respuesta);
+    }
+    public void eliminarMateria(Materia materia) {
+        Optional<Materia> materiaBuscado = buscarMateria(
+                materia.getCodigo());
+        if (materiaBuscado.isPresent()) {
+            listaMaterias.remove(materia);
+            jOption("Se ha removido al profesor "
+                    + materiaBuscado + " de la universidad.");
+        } else {
+            jOption("El eprofesor con código " + materia.getCodigo() + " no está registrado.");
+        }
     }
     public void asignarMateriaPro(Materia materia, Profesor profesor){
         profesor.listaMaterias.add(materia);
@@ -138,21 +149,14 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
        return listaMaterias.stream().mapToInt( materia -> materia.getHoraSemana()).sum();
     }
 
-
-    public int calcularCreditosSemestre  (Estudiante estudiante){
-
-        return listaMaterias.stream().filter(materia -> materia.getListaEstudiantes().contains(estudiante)).mapToInt(materia :: getCantidadCreditos).sum();
-        //
         public int calcularCreditosEstudianteSemestre(Estudiante estudiante, int semestre) {
             return listaEstudiantes.stream()
                     .filter(c -> c.getId().equals(estudiante.getId()))
                     .flatMap(c -> c.getListaMaterias().stream())   // 📌 expandimos las materias del estudiante
-                    .filter(m -> m.getSemestre() == semestre)
-                    .mapToInt(Materia::getCreditos)
+                    .filter(m -> m.getSemestreEsperado() == semestre)
+                    .mapToInt(Materia::getCantidadCreditos)
                     .sum();
         }
-
-    }
 
 
 
@@ -164,6 +168,9 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
                 ",\n listaProfesores=" + listaProfesores +
                 ",\n listaEstudiantes=" + listaEstudiantes +
                 '}';
+    }
+    public void jOption(String mensaje){
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 }
 

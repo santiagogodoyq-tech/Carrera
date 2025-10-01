@@ -3,7 +3,7 @@ package Model;
 public class EstudiantePosgrado extends Estudiante{
     private Educacion educacion;
     private String temaInvestigacion;
-    public EstudiantePosgrado(String identificacion, String nombre, String id, String programaAcademico, String semestre, Educacion educacion, String temaInvestigacion, Profesor profesor) {
+    public EstudiantePosgrado(String identificacion, String nombre, String id, String programaAcademico, int semestre, Educacion educacion, String temaInvestigacion, Profesor profesor) {
         super(nombre, id, programaAcademico, semestre);
         this.educacion = educacion;
         this.temaInvestigacion = temaInvestigacion;
