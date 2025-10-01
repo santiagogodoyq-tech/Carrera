@@ -52,6 +52,9 @@ Profesor profesor3 = new ProfesorPlanta("1093", "sofia arbelaez", "ingeniero Ele
         carrera.asignarMateriaPro(materia, profesor);
         carrera.asignarMateriaPro(materia1, profesor2);
         carrera.asignarMateriaPro(materia2, profesor3);
+        carrera.jOption(""+carrera.profesoresCatedra());
+        carrera.jOption(""+carrera.calcularCreditosEstudianteSemestre(estudiante, 2));
+        carrera.jOption(""+carrera.horasMateria(materia));
     }
 
 }

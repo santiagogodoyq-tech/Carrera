@@ -138,14 +138,14 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
 
     // calcular el total de olas semanales de una playa del caribe.
 
-    public int horasMateria(Materia materia){
+    public int horasMateria(Materia materia){ //tenemos dos funciones que hacen lo mismo, use esta mejor
         return listaMaterias.stream().filter(m -> m.getCodigo().equals(materia.getCodigo())).mapToInt(Materia :: getHoraSemana).sum();
     }
    // cuantas catedras existen en un profesor
     public int profesoresCatedra(){
         return (int) listaProfesores.stream().filter(profesor -> profesor instanceof ProfesorCatedra).count();
     }
-    public int horasSemanalesTotales (ArrayList<Materia>materiasALasQueQuiereSaberleLasHorasSemanales){
+    public int horasSemanalesTotales (ArrayList<Materia>materiasALasQueQuiereSaberleLasHorasSemanales){ //campos acuerdese de cambiar esta funcion pls, y cambie el arraylist por un solo objeto
        return listaMaterias.stream().mapToInt( materia -> materia.getHoraSemana()).sum();
     }
 
