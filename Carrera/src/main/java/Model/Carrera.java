@@ -121,7 +121,7 @@ public record Carrera(String nombre,ArrayList<Materia> listaMaterias, ArrayList<
     }
     // una funcion que consulte todas las materias de un semestre en especifico
     public String semestreBuscado(int semestre) {
-        return String.valueOf(listaMaterias.stream().filter(materia -> materia.getSemestreEsperado() == semestre) .map(Materia::toString).toList());
+        return String.valueOf(listaMaterias.stream().filter(materia -> materia.getSemestreEsperado() == semestre) .map(Materia::getNombre).toList());
     }
 
             //saca el nombre de todos los estudiantes de la materia

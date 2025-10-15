@@ -3,7 +3,7 @@ public  class MateriaPractica extends Materia {
         private int numeroHorasPractica;
         private int numeroLaboratorios;
 
-        private MateriaPractica(String codigo, String nombre, int horaSemana, int cantidadCreditos, String semestreEsperado, Profesor profesor, int numeroHorasPractica, int numeroLaboratorios ) {
+        public MateriaPractica(String codigo, String nombre, int horaSemana, int cantidadCreditos, int semestreEsperado, Profesor profesor, int numeroHorasPractica, int numeroLaboratorios) {
             super(codigo, nombre, horaSemana, cantidadCreditos, semestreEsperado, profesor);
             this.numeroHorasPractica = numeroHorasPractica;
             this.numeroLaboratorios = numeroLaboratorios;

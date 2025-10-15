@@ -1,10 +1,12 @@
 package Model;
-
+import java.util.ArrayList;
 public abstract class Profesor  {
     public String  id;
     public String nombre;
     public String titulo;
     public int añosDeExperiencia;
+    public ArrayList<Materia>listaMaterias;
+    // filter map count sum reuse
 
     public Profesor(String id, String nombre,  String titulo, int añosDeExperiencia) {
         this.id = id;
